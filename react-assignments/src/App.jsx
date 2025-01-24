@@ -1,7 +1,12 @@
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import ChildComponent from "./childComponent";
 import MyStateComponent from "./Components/MyStateComponent/MyStateComponent";
-import EffectsComponent from "./Components/Effect/EffectsComponent";
+import PropsComponent from "./Components/MyStateComponent/PropsComponent";
+import EffectComponent from "./Components/Effect/EffectsComponent";
+import HomePage from "./HomePage/HomePage";
+
 
 function App() {
   const person = {
@@ -20,9 +25,14 @@ function App() {
         <h1>This is React</h1>
         <ChildComponent person={person} />
         <MyStateComponent />
-        <EffectsComponent> </EffectsComponent>
       </header>
-      {/* TODO create a child component in proper jsx, the component takes the person object as props and render the data */}
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route path="Props" element={<PropsComponent person={person} />} />
+        <Route path="state" element={<MyStateComponent />} />
+        <Route path="effect" element={<EffectComponent />} />
+      </Routes>
+
     </div>
   );
 }
